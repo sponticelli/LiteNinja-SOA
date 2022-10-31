@@ -1,0 +1,19 @@
+{
+    "name": "LiteNinja.SOA.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:149c771411f9a499789e259f774f5e18",
+        "GUID:5b1d73dfe20c640269b8bca03e158b50"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
