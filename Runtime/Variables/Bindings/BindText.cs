@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,12 +19,14 @@ namespace LiteNinja.SOA.Variables
     public string Prefix = string.Empty;
     public string Suffix = string.Empty;
 
-    //int specific
+    [Header("Int Variable")]
     [Tooltip("Useful too an offset, for example for Level counts. If your level index is  0, add 1, so it displays Level : 1")]
     public int Increment;
-
-    //float specific
-    [Tooltip("Useful too an offset, for example for Level counts. If your level index is  0, add 1, so it displays Level : 1")]
+    public bool useCultureInfo;
+    public CultureInfo Culture = CultureInfo.CurrentCulture;
+        
+    [Header("Float Variable")]
+    [Tooltip("For float, you can specify the number of decimal to display")]
     [Min(1)]
     public int DecimalAmount = 2;
         
@@ -53,8 +56,8 @@ namespace LiteNinja.SOA.Variables
           _stringBuilder.Append(_boolVariable.ToString());
           break;
         case CustomVariableType.INT:
-          var amount = _intVariable.Value;
-          _stringBuilder.Append(amount + Increment);
+          var amount = _intVariable.Value + Increment;
+          _stringBuilder.Append(useCultureInfo ? amount.ToString("N0", Culture) : amount.ToString());
           break;
         case CustomVariableType.FLOAT:
           var rounded = System.Math.Round(_floatVariable.Value, DecimalAmount);
